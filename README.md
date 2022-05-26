@@ -100,3 +100,22 @@ readFile('./temp.txt', 'utf8', (err, result) => {
 });
 ```
 
+## HTTP
+
+```js
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.end("Welcome to Home");
+    }
+    else if(req.url === '/about'){
+        res.end("Welcome to About");
+    }
+    else{
+        res.end("Oops!");
+    }
+});
+
+server.listen(5000)
+```
