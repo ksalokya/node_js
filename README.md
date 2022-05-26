@@ -56,7 +56,7 @@ console.log(absolute)
 ```
 
 
-## Path Module (Sync)
+## File System Module (Sync)
 
 ```js
 const {readFileSync, writeFileSync} = require('fs');
@@ -68,8 +68,31 @@ console.log(myFile)
 // write into file
 writeFileSync('./temp.txt', 'Hello World!')
 console.log(myFile)
-
 ```
 
+## File System Module (Async)
 
+```js
+const {readFile, writeFile} = require('fs');
+
+// read file
+readFile('./temp.txt', 'utf8', (err, result) => {
+    if (err) {
+        console.log("Error");
+    } else {
+        console.log(result);
+
+        // write into file
+        writeFile('./temp.txt', 'Hello World...', (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                readFile('./temp.txt', 'utf8', (err, result) => {
+                    console.log(result)
+                })
+            }
+        })
+    }
+});
+```
 
