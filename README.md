@@ -54,3 +54,22 @@ console.log(filePath)
 const absolute = path.resolve(__dirname, 'untitled','temp.txt');
 console.log(absolute)
 ```
+
+
+## Path Module (Sync)
+
+```js
+const {readFileSync, writeFileSync} = require('fs');
+
+// read file
+const myFile = readFileSync('./temp.txt', 'utf8');
+console.log(myFile)
+
+// write into file
+writeFileSync('./temp.txt', 'Hello World!')
+console.log(myFile)
+
+```
+
+
+
