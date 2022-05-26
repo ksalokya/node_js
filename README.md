@@ -1,4 +1,8 @@
-# node.js_modules
+<h1 align="center">Node.js Modules</h1>
+
+<div align="center">
+  <img src="https://github.com/ksalokya/node.js_modules/blob/main/nodejs.gif" width="400px"/>
+</div>
 
 ## OS Module
 
