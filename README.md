@@ -24,3 +24,33 @@ const currentOs = {
 }
 console.log(currentOs)
 ```
+
+## Path Module
+
+```js
+const path = require('path');
+
+// returns the last portion of a path
+const last = path.basename("/foo/bar/index.html");
+console.log(last)
+
+// returns the directory name of a path
+const dir = path.dirname("/foo/bar/index.html");
+console.log(dir)
+
+//  returns the extension of the path
+const ext = path.extname("/foo/bar/index.html");
+console.log(ext)
+
+// Provides the platform-specific path segment separator
+const sep = path.sep;
+console.log(sep)
+
+// joins all given path segments together
+const filePath = path.join('untitled','temp.txt');
+console.log(filePath)
+
+// resolves a sequence of paths or path segments into an absolute path
+const absolute = path.resolve(__dirname, 'untitled','temp.txt');
+console.log(absolute)
+```
