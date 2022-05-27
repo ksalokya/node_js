@@ -1,4 +1,4 @@
-<h1 align="center">Node.js Modules</h1>
+<h1 align="center">Node.js</h1>
 
 <div align="center">
   <img src="https://github.com/ksalokya/node.js_modules/blob/main/nodejs.gif" width="400px"/>
@@ -118,4 +118,38 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(5000)
+```
+
+## Async Patterns
+
+```js
+const {readFile} = require("fs");
+
+const getText = (path) => {
+    return new Promise((resolve, reject) => {
+        readFile(path, 'utf8', (err, data) => {
+            if (err)
+                reject(err)
+            else
+                resolve(data)
+        });
+    });
+};
+
+// Using nested callbacks
+getText("./temp.txt")
+    .then((res) => { console.log(res); })
+    .catch((err) => { console.log(err); });
+
+// Using async await
+const start = async () => {
+    try{
+        const first = await getText("./temp.txt");
+        console.log(first)
+    } catch (error){
+        console.log(error.message)
+    }
+}
+
+start();
 ```
