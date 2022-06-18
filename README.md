@@ -255,3 +255,38 @@ app.listen(port, function () {
     console.log(`Serve at http://localhost:${port}`);
 });
 ```
+
+## Express Router
+
+```js
+const express = require("express");
+const router = express.Router();
+
+router.get('/', (req, res) => {
+    res.send("About");
+})
+
+router.get('/prod', (req, res) => {
+    res.send("About Product");
+})
+
+module.exports = router
+```
+
+```js
+const express = require("express");
+
+const port = process.env.PORT || 5000;
+const app = express();
+
+const about = require('./about');
+app.use('/about',about)
+
+app.get('/', (req, res) => {
+    res.send("Home");
+})
+
+app.listen(port, function () {
+    console.log(`Serve at http://localhost:${port}`);
+});
+```
