@@ -231,3 +231,27 @@ app.listen(port, function () {
     console.log(`Serve at http://localhost:${port}`);
 });
 ```
+
+## Multiple Middlewares
+
+```js
+const express = require("express");
+
+const port = process.env.PORT || 5000;
+const app = express();
+
+const logger = require('./logger')
+const authorize = require('./authorize')
+
+// multiple middlewares
+// executes sequentially
+app.use([logger, authorize])
+
+app.get('/', (req, res) => {
+    res.send("Home");
+})
+
+app.listen(port, function () {
+    console.log(`Serve at http://localhost:${port}`);
+});
+```
