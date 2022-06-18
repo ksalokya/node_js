@@ -290,3 +290,54 @@ app.listen(port, function () {
     console.log(`Serve at http://localhost:${port}`);
 });
 ```
+
+## Controllers
+
+### Controller
+```js
+const getAbout = (req, res) => {
+    res.send("About");
+}
+
+const getAboutProd = (req, res) => {
+    res.send("About Product");
+}
+
+module.exports = {
+    getAbout,
+    getAboutProd
+}
+```
+
+### Router
+```js
+const express = require("express");
+const router = express.Router();
+
+const {getAbout, getAboutProd} = require('../controllers/getAbout')
+
+router.get('/',getAbout)
+
+router.get('/prod',getAboutProd)
+
+module.exports = router
+```
+
+### Server
+```js
+const express = require("express");
+
+const port = process.env.PORT || 5000;
+const app = express();
+
+const about = require('./routes/about');
+app.use('/about',about)
+
+app.get('/', (req, res) => {
+    res.send("Home");
+})
+
+app.listen(port, function () {
+    console.log(`Serve at http://localhost:${port}`);
+});
+```
