@@ -185,3 +185,49 @@ app.listen(port, function () {
     console.log(`Serve at http://localhost:${port}`);
 });
 ```
+
+## app.use
+
+```js
+const logger = (req, res, next) => {
+    const method = req.method;
+    const url = req.url;
+    const time = new Date().getFullYear();
+    console.log(method, url, time);
+
+    next();
+}
+
+module.exports = logger
+```
+
+```js
+const express = require("express");
+
+const port = process.env.PORT || 5000;
+const app = express();
+
+const logger = require('./logger')
+
+// applies to all routes
+app.use(logger)
+
+// applies to routes starting with /about
+app.use('/about', logger)
+
+app.get('/', (req, res) => {
+    res.send("Home");
+})
+
+app.get('/about', (req, res) => {
+    res.send("About");
+})
+
+app.get('/about/prod', (req, res) => {
+    res.send("About Product");
+})
+
+app.listen(port, function () {
+    console.log(`Serve at http://localhost:${port}`);
+});
+```
